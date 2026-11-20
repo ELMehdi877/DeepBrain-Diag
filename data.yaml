@@ -1,0 +1,10 @@
+path: c:\Users\safiy\Desktop\2eme annee Youcode\Brief\DeepBrain-Diag\yolo_dataset
+train: images/train
+val: images/val
+test: images/test
+nc: 4
+names:
+  0: Glioma
+  1: Meningioma
+  2: No Tumor
+  3: Pituitary
