@@ -1,2 +1,4 @@
-Data
-models
+Data/
+models/
+archive/
+*.zip
