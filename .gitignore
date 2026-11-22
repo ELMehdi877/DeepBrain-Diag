@@ -3,3 +3,9 @@ models/
 archive/
 *.zip
 yolo_dataset/
+*.pt
+logs/
+mlruns/
+runs/
+mlflow.db
+__pycache__/

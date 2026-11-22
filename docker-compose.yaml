@@ -1,0 +1,29 @@
+# ==============================================================================
+# DOCKER COMPOSE : APACHE AIRFLOW (MODE STANDALONE LÉGER)
+# Objectif : Exécuter l'orchestrateur Airflow en local avec accès aux dossiers
+#            du projet DeepBrain-Diag (datasets, modèles, rapports et MLflow).
+# ==============================================================================
+
+services:
+  airflow-standalone:
+    image: apache/airflow:2.10.2
+    container_name: deepbrain_airflow
+    command: standalone
+    ports:
+      - "8080:8080"
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=sqlite:////opt/airflow/airflow.db
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - _AIRFLOW_WWW_USER_USERNAME=admin
+      - _AIRFLOW_WWW_USER_PASSWORD=admin
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - ./models:/opt/airflow/project/models
+      - ./reports:/opt/airflow/project/reports
+      - ./yolo_dataset:/opt/airflow/project/yolo_dataset
+      - ./Data:/opt/airflow/project/Data
+      - ./data.yaml:/opt/airflow/project/data.yaml
+      - ./mlflow.db:/opt/airflow/project/mlflow.db
