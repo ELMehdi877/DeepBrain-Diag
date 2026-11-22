@@ -142,8 +142,8 @@ docker compose up -d
 
 **Récupérer le mot de passe administrateur Airflow :**
 ```powershell
-# Afficher le mot de passe généré dans le conteneur
-docker compose exec airflow-webserver cat /opt/airflow/simple_auth_manager_passwords.json.generated
+# lire le fichier généré directement dans ce conteneur
+docker exec deepbrain_airflow cat /opt/airflow/standalone_admin_password.txt
 
 # Ou rechercher dans les logs de démarrage
 docker compose logs | Select-String -Pattern "password"
